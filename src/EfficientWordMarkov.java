@@ -14,12 +14,19 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 		super(order);
 		myMap = new HashMap<>();
 	}
-	
+	/*
+	 * Method to retrieve ArrayList of Strings(words) that follow a certain key from the text passed in to setTraining
+	 * @param kgram is the desired WordGram from myMap, and the method returns the value (ArrayList) associated with that kgram in the map
+	 */
 	public ArrayList<String> getFollows(WordGram kgram){
 		if(!myMap.containsKey(kgram)) throw new NoSuchElementException(kgram+" not in map");
 		return myMap.get(kgram);
 	}
-	
+	/*
+	 * setTraining creates a HashMap of keys, which are Wordgrams of the order that is passed in, and values, 
+	 * which are ArrayLists of all the Strings that follow that particular key in the text file
+	 * @param text is the complete file/body of text that is the source for the HashMap
+	 */
 	public void setTraining(String text) {
 		myWords = text.split("\\s+");
 		myMap = new HashMap<>();

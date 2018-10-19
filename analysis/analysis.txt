@@ -2,6 +2,8 @@ This is the analysis for Markov Part 2, Fall 2018
 
 Include your name and net id here. Answer the questions from the assignment 
 that are reproduced below
+Sachin Jaishankar
+sj251
 
 (1) Determine (from running Benchmark.java) how long it takes for 
 BaseMarkov to generate 2,000, 4,000, 8,000, 16,000, and 32,000 
@@ -11,6 +13,16 @@ The program also generates 4,096 characters using texts that increase in
 size from 496,768 characters to 4,967,680 characters (10 times the number).  
 Do you the timings support the O(NT) analysis for BaseMarkov?
 
+time	source	#chars
+0.241	496768	2000
+0.480	496768	4000
+1.051	496768	8000
+1.639	496768	16000
+3.939	496768	32000
+
+Yes, the timings support the O(NT) analysis for BaseMarkov because as the number of characters is doubled, 
+the time is approximately doubled. The change is more evident for the smaller number of characters: when the 
+characters goes from 2000 to 4000, the time is almost exactly doubled, 
 
 
 (2) Determine (from running Benchmark.java) how long it takes for 
@@ -21,7 +33,54 @@ The program also generates 4,096 characters using texts that increase in
 size from 496,768 characters to 4,967,680 characters (10 times the number).  
 Do you the timings support the O(N+T) analysis for EfficientMarkov?
 
+time	source	#chars
+0.251	496768	2000
+0.300	496768	4000
+0.291	496768	8000
+0.247	496768	16000
+0.201	496768	32000
+
+Yes, the timings support the O(N+T) analysis for EfficientMarkov because the number of characters is independent 
+of the time the program takes to run; it always takes between 0.20 and and 0.35 seconds to execute. There is sometimes 
+one random surge in time with 4000 characters, but after running Benchmark multiple times, the surge in time for number
+of characters is completely random and most probably a function of the machine itself.
+
 (3)The tests in the class Benchmark use an order-5 Markov Model. 
 Run tests that you think are appropriate to determine if the order of the 
 Markov Model has a significant impact on the running time for BaseMarkov. 
 Explain your reasoning.
+Order 3:
+time	source	#chars
+0.300	496768	2000
+0.602	496768	4000
+1.191	496768	8000
+2.424	496768	16000
+4.789	496768	32000
+
+Order 4:
+time	source	#chars
+0.265	496768	2000
+0.521	496768	4000
+1.021	496768	8000
+2.052	496768	16000
+4.103	496768	32000
+
+Order 5:
+time	source	#chars
+0.245	496768	2000
+0.482	496768	4000
+0.972	496768	8000
+1.559	496768	16000
+3.849	496768	32000
+
+Order 10:
+time	source	#chars
+0.233	496768	2000
+0.459	496768	4000
+0.814	496768	8000
+1.847	496768	16000
+
+Initially, as the order increases, the running time for BaseMarkov decreases, as there are less and less occurrences of repeat 
+sequences, but after a certain threshold, the run time for BaseMarkov remains approximately consistent, as the occurrences of 
+repeat sequences have similar frequencies regardless of whether that order is 10 or 20 or some other large number.
+
