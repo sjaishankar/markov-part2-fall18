@@ -27,7 +27,7 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 			WordGram wg = new WordGram(myWords, i, myOrder);
 			ArrayList<String> temp = new ArrayList<String>();
 			if(!myMap.containsKey(wg)) {
-				if(wg.length() + i >= text.length()) {
+				if(i != myWords.length - myOrder) {
 					temp.add(PSEUDO_EOS);
 					myMap.put(wg, temp);
 					break;
