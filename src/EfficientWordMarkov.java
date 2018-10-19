@@ -23,9 +23,8 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 	public void setTraining(String text) {
 		myWords = text.split("\\s+");
 		myMap = new HashMap<>();
-		for(int i = 0; i <= text.length() - myOrder; i++) {
-			WordGram wg = new WordGram(myWords, i, i + myOrder);
-			String str = text.substring(i, i+myOrder);
+		for(int i = 0; i <= myWords.length - myOrder; i++) {
+			WordGram wg = new WordGram(myWords, i, myOrder);
 			ArrayList<String> temp = new ArrayList<String>();
 			if(!myMap.containsKey(wg)) {
 				if(wg.length() + i >= text.length()) {
@@ -33,7 +32,7 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 					myMap.put(wg, temp);
 					break;
 				}
-				temp.add(text.substring(i+wg.length(), i + wg.length() + 1));
+				temp.add(myWords[i+myOrder]);
 				myMap.put(wg, temp);
 			}
 			
@@ -44,7 +43,7 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 					myMap.put(wg, temp);
 					break;
 				}
-				temp.add(text.substring(i+wg.length(), i + wg.length() + 1));
+				temp.add(myWords[i+myOrder]);
 				myMap.put(wg, temp);
 			}
 			
