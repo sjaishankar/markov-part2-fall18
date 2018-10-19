@@ -20,7 +20,7 @@ public class Benchmark {
 	 * @return a model that implements the proper interface
 	 */
 	private static MarkovInterface<String> getMarkov(int order) {
-		return new BaseMarkov(order);
+		return new EfficientMarkov(order);
 		//return new EfficientMarkov(order);
 	}
 	
