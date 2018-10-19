@@ -38,7 +38,7 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 			
 			else {
 				temp = myMap.get(wg);
-				if(wg.length() + i >= text.length()) {
+				if(i != myWords.length - myOrder) {
 					temp.add(PSEUDO_EOS);
 					myMap.put(wg, temp);
 					break;
